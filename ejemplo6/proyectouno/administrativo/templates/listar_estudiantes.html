@@ -6,29 +6,40 @@
 <table border="1px">
   <tr>
     <th><b>Nombre</b></th>
-    <th><b>Módulo</b></th>
-    <th><b>Comentario</b></th>
-    <th><b>Opciones</b></th>
+    <th><b>Apellido</b></th>
+    <th><b>Cedula</b></th>
+    <th><b>Edad</b></th>
+    <th><b>Tipo</b></th>
+    <th><b>Matricula</b></th>
   </tr>
-  {% for e in matriculas %}
+  {% for e in estudiantes %}
   <tr>
     <td>
-      {{e.estudiante.nombre}}
-      [<a href="{% url 'detalle_estudiante' e.estudiante.id %}">+</a>]
+      {{e.nombre}}
     </td>
     <td>
-      {{e.modulo.nombre}}
+      {{e.apellido}}
     </td>
     <td>
-      {{e.comentario}}
+      {{e.cedula}}
     </td>
     <td>
-      [<a href="{% url 'detalle_matricula' e.id %}">ver</a>]
-      [<a href="{% url 'editar_matricula' e.id %}">editar</a>]
+      {{e.edad}}
+    </td>
+    <td>
+      {{e.tipo_estudiante}}
+    </td>
+    <td>
+      {% for m in e.lasmatriculas.all %}
+        • Módulo: {{ m.modulo.nombre }}<br>
+        &nbsp;&nbsp;Costo: ${{ m.costo }}<br><br>
+      {% empty %}
+        No tiene matrículas
+      {% endfor %}
     </td>
   </tr>
   {% endfor %}
 
 </table>
 
-[<a href="{% url 'listar_estudiantes'%}>Lista Estudiantes</a>]
+[<a href="{% url 'index' %}">inicio</a>]

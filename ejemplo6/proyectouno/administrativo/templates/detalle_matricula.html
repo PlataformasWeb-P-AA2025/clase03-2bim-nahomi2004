@@ -1,10 +1,43 @@
-
-
 <h3>Detalle de Matricula</h3>
 
-<b>Nombre:</b> {{matricula.estudiante}}
-</br>
-<b>Modulo:</b> {{matricula.modulo}}
+<table border="1px">
+    <tr>
+        <th><b>Nombre</b></th>
+        <th><b>Apellido</b></th>
+        <th><b>Cedula</b></th>
+        <th><b>Edad</b></th>
+        <th><b>Tipo</b></th>
+        <th><b>Matricula</b></th>
+    </tr>
+
+    <tr>
+        <td>
+            {{matricula.estudiante.nombre}}
+        </td>
+
+        <td>
+            {{matricula.estudiante.apellido}}
+        </td>
+
+        <td>
+            {{matricula.estudiante.cedula}}
+        </td>
+
+        <td>
+            {{matricula.estudiante.edad}}
+        </td>
+
+        <td>
+            {{matricula.estudiante.tipo_estudiante}}
+        </td>
+
+        <td>
+            {{matricula.modulo}}
+            <br>
+            Costo: ${{matricula.costo}}
+        </td>
+    </tr>
+</table>
 
 </br>
 [<a href="{% url 'index' %}">inicio</a>]

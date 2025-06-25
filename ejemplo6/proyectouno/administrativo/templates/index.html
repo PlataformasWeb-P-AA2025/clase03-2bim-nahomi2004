@@ -9,6 +9,7 @@
     <th><b>Estudiante</b></th>
     <th><b>Módulo</b></th>
     <th><b>Comentario</b></th>
+    <th><b>Costo</b></th>
     <th><b>Opciones</b></th>
   </tr>
   {% for e in matriculas %}
@@ -24,6 +25,9 @@
       {{e.comentario}}
     </td>
     <td>
+      {{e.costo}}
+    </td>
+    <td>
       [<a href="{% url 'detalle_matricula' e.id %}">ver</a>]
       [<a href="{% url 'editar_matricula' e.id %}">editar</a>]
     </td>
@@ -31,5 +35,6 @@
   {% endfor %}
 
 </table>
-
-[<a href="{% url 'listar_estudiantes'%}>Lista Estudiantes</a>]
+<br>
+<br>
+[<a href="{% url 'listar_estudiantes'%}">Lista Estudiantes</a>]
