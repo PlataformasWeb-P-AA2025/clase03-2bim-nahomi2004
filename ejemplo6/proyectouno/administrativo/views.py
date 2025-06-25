@@ -20,9 +20,11 @@ def index(request):
 
     titulo = "Listado de matriculas"
     
+    '''
     for estudiante in estudiantes:
         total = sum([mat.costo for mat in estudiante.lasmatriculas.all()])
         estudiante.total_costo = total  # Agregas como propiedad extra
+    '''
     
     informacion_template = {'matriculas': matriculas,
     'numero_matriculas': len(matriculas), 'mititulo': titulo, 'estudiantes': estudiantes, 'numero_estudiantes': len(estudiantes)}
