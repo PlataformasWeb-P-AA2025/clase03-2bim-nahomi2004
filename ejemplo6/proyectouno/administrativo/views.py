@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render
 
+from django.db.models import Sum
+
 # importar las clases de models.py
 from administrativo.models import Matricula, Estudiante
 from administrativo.forms import MatriculaForm, MatriculaEditForm
@@ -14,10 +16,17 @@ def index(request):
     """
     """
     matriculas = Matricula.objects.all()
+    estudiantes = Estudiante.objects.all()
 
     titulo = "Listado de matriculas"
+    
+    for estudiante in estudiantes:
+        total = sum([mat.costo for mat in estudiante.lasmatriculas.all()])
+        estudiante.total_costo = total  # Agregas como propiedad extra
+    
     informacion_template = {'matriculas': matriculas,
-    'numero_matriculas': len(matriculas), 'mititulo': titulo}
+    'numero_matriculas': len(matriculas), 'mititulo': titulo, 'estudiantes': estudiantes, 'numero_estudiantes': len(estudiantes)}
+    
     return render(request, 'index.html', informacion_template)
 
 
