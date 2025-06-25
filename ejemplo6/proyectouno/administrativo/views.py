@@ -73,3 +73,13 @@ def detalle_estudiante(request, id):
     estudiante = Estudiante.objects.get(pk=id)
     informacion_template = {'e': estudiante}
     return render(request, 'detalle_estudiante.html', informacion_template)
+
+def listar_estudiantes(request):
+    """
+    """
+    estudiantes = Estudiante.objects.all()
+
+    titulo = "Listado de estudiantes"
+    informacion_template = {'estudiantes': estudiantes,
+    'numero_estudiantes': len(estudiantes), 'mititulo': titulo}
+    return render(request, 'listar_estudiantes.html', informacion_template)
